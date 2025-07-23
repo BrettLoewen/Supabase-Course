@@ -3,11 +3,11 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import MessageBoard from "./MessageBoard";
 import AllPosts from "./AllPosts";
 import PostView from "./PostView";
-import Welcome from "./Welcome";
 import NavBar from "./NavBar";
 import type { SupashipUserInfo } from "./use-session";
 import { useSession } from "./use-session";
 import { createContext } from "react";
+import { Welcome, welcomeLoader } from "./Welcome";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +31,7 @@ const router = createBrowserRouter([
             {
                 path: "welcome",
                 element: <Welcome />,
+                loader: welcomeLoader,
             },
         ],
     },

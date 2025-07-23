@@ -17,12 +17,18 @@ async function startSupabase() {
 }
 
 function reseedDb() {
-  execSync(
-    "PGPASSWORD=postgres psql -U postgres -h 127.0.0.1 -p 54322 -f supabase/clear-db-data.sql",
-    // for Windows:
-    // "SET PGPASSWORD=postgres&&psql -U postgres -h 127.0.0.1 -p 54322 -f supabase/clear-db-data.sql"
-    { stdio: "ignore" }
-  );
+  console.log("Reseeding the database...");
+  try {
+    execSync(
+      'cmd.exe /c "SET PGPASSWORD=postgres&& psql -U postgres -h 127.0.0.1 -p 54322 -f supabase/clear-db-data.sql"',
+      { stdio: "inherit" } // show output
+    );
+    console.log("✅ Database reseeded successfully.");
+  } catch (err) {
+    console.error("❌ Failed to reseed database:");
+    console.error(err);
+    throw err;
+  }
 }
 
 export async function signUp(
