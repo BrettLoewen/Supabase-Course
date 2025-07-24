@@ -93,3 +93,12 @@ export async function createPost(page: Page, title: string, contents: string) {
   await expect(post).toHaveCount(1);
   return post;
 }
+
+export async function createComment(page: Page, comment: string) {
+  const commentInput = page.locator(`textarea[name="comment"]`);
+  const commentSubmitButton = page.locator(`button[type="submit"]`);
+  await commentInput.fill(comment);
+  await commentSubmitButton.click();
+  const createdComment = page.locator("p", { hasText: comment });
+  await expect(createdComment).toHaveCount(1);
+}
