@@ -32,12 +32,12 @@ test.describe("Message Board", () => {
       browser,
     }) => {
       const otherUser = await browser.newPage();
-      otherUser.goto("http://localhost:1337");
+      await otherUser.goto("http://localhost:1337");
       await signUp(otherUser, testUserEmail, testUserPassword, testUserName);
       const post = await createPost(otherUser, "test post", "test contents");
       await post.click();
       await createComment(otherUser, "test comment");
-      page.goto("http://localhost:1337");
+      await page.goto("http://localhost:1337/1");
       const messageBoardSignIn = page.locator(
         `[data-e2e="message-board-login"]`
       );
@@ -74,6 +74,7 @@ test.describe("Message Board", () => {
       page,
     }) => {
       await signUp(page, testUserEmail, testUserPassword, testUserName);
+      await page.goto("http://localhost:1337/1");
       const messageBoardTitle = page.locator("h2", {
         hasText: "Message Board",
       });

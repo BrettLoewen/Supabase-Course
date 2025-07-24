@@ -1,8 +1,8 @@
 import "./App.css";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import MessageBoard from "./MessageBoard";
-import AllPosts from "./AllPosts";
-import PostView from "./PostView";
+import { AllPosts } from "./AllPosts";
+import { PostView } from "./Post";
 import NavBar from "./NavBar";
 import type { SupashipUserInfo } from "./use-session";
 import { useSession } from "./use-session";
