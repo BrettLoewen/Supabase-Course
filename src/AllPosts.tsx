@@ -53,7 +53,7 @@ export function AllPosts() {
                 />
             )}
             <div className="posts-container">
-                {posts?.map((post, i) => (
+                {posts?.map((post) => (
                     <Post
                         key={post.id}
                         postData={post}
